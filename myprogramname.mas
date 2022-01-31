@@ -1,0 +1,66 @@
+/ justin gesek
+
+input 		/input a
+output		/output a
+store a		/save it
+input		/input b
+output		/output b
+store b		/save it
+input		/input c
+output		/output c
+store c		/save it
+
+clear		/ set z1 and z2 = to 0
+store z1
+store z2
+
+/go multiple by c if b is less than or = to 0
+mul1, load b		
+skipcond 800
+jump mul2
+
+/subtract one from b
+subt one
+store b
+
+/add a to z1 
+load z1
+add a
+store z1
+
+/continue multiplying a by b
+jump mul1
+
+/ show intermediate product
+mul2, load z1 
+output
+
+
+/go finish if c is less than or = to 0
+mul2a, load c 
+skipcond 800
+jump mul3
+
+/subtract 1 from c
+subt one
+store c
+
+/add z1 to z2
+load z2
+add z1
+store z2
+jump mul2a
+
+
+/show final product
+mul3, load z2
+output
+halt
+
+a, dec 0 
+b, dec 0
+c, dec 0
+z1, dec 0
+z2, dec 0
+one, dec 1
+
